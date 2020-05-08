@@ -1,0 +1,33 @@
+class LinkedList
+{
+    static Node segregate(Node head)
+    {
+        // add your code here
+        int n0 = 0, n1 = 0, n2 = 0;
+        Node crr = head;
+        while (crr != null) {
+            if (crr.data == 0) {
+                n0++;
+            } else if (crr.data == 1) {
+                n1++;
+            } else {
+                n2++;
+            }
+            crr = crr.next;
+        }
+        crr = head;
+        while (n0-- > 0) {
+            crr.data = 0;
+            crr = crr.next;
+        }
+        while (n1-- > 0) {
+            crr.data = 1;
+            crr = crr.next;
+        }
+        while (n2-- > 0) {
+            crr.data = 2;
+            crr = crr.next;
+        }
+    return head;
+    }
+}

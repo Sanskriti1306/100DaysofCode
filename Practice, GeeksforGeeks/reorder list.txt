@@ -1,0 +1,26 @@
+struct Node
+{
+    int data;
+    struct Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+*/
+
+void reorderList(Node* head) {
+    // Your code here
+    Node *p=head, *q=head;
+        while(p->next!=NULL &&p->next->next!=NULL)
+        {
+            for(q=head;q->next->next!=NULL;q=q->next);
+            q->next->next=p->next;
+            p->next=q->next;
+            q->next=NULL;
+            p=p->next->next;
+        }
+    
+    
+}

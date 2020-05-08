@@ -1,0 +1,54 @@
+//Question Link:https://www.codechef.com/LRNDSA02/problems/INPSTFIX
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    private static int getPriority(char inputChar) {
+	    if(inputChar == '^')
+	        return 3;
+        else if (inputChar == '*' || inputChar == '/')
+            return 2;
+        else if(inputChar == '+' || inputChar == '-')
+            return 1;
+        else 
+            return 0;
+	}
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner s = new Scanner(System.in);
+	    Integer testCases = s.nextInt();
+	    
+	    while(testCases-- > 0) 
+	    {
+	        int n = s.nextInt();
+	        String infixString = s.next();
+	        Stack stack = new Stack();
+	        String postFixString = "";
+	        for(int i=0; i<infixString.length();i++){
+	            if(infixString.charAt(i) == '(') {
+	                stack.push('(');
+	            } else if(infixString.charAt(i) == ')') {
+	                char poppedElement;
+	                while(!stack.empty() && (poppedElement = (char)stack.pop()) != '('){
+	                   postFixString = postFixString + poppedElement; 
+	                }
+	            } else if(infixString.charAt(i) >=65 && infixString.charAt(i) <=90) {
+	                postFixString = postFixString + infixString.charAt(i);
+	            } else {
+	                while(!stack.empty() && getPriority((char)stack.peek()) >= getPriority(infixString.charAt(i))) {
+	                        postFixString = postFixString + stack.pop();
+	                }
+	               stack.push(infixString.charAt(i));
+	            }
+	        }
+	        while(!stack.empty()){
+   	            postFixString = postFixString + stack.pop();
+	        }
+	        System.out.println(postFixString);
+	    }
+}
+}

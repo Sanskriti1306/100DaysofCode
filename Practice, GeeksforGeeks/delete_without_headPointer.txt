@@ -1,0 +1,13 @@
+void deleteNode(Node *node)
+{
+   // Your code here
+   Node * p= node;
+   while(p!=NULL)
+   {
+       p->data=p->next->data;
+       if(p->next->next==NULL)
+       p->next=NULL;
+       p=p->next;
+       
+   }
+}
