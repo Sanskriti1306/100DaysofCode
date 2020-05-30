@@ -1,0 +1,42 @@
+//Question Link : https://practice.geeksforgeeks.org/problems/sorting-elements-of-an-array-by-frequency/0
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+bool compare( pair<int, int> &p1, pair<int,int> &p2)
+{
+    if (p1.second == p2.second) 
+        return p1.first < p2.first; 
+    return p1.second > p2.second; 
+}
+int main() {
+	//code
+	int t, n;
+	cin>> t;
+	while(t-->0)
+	{
+	    cin>>n;
+	    map<int ,int >m;
+	    int arr[n];
+	    for(int i=0;i<n;i++)
+	    {
+	    cin>>arr[i];
+	    m[arr[i]]++;
+	    }
+	pair<int , int> p[n];
+	int i=0;
+	for( auto it = m.begin();it!=m.end();it++)
+	p[i++]= make_pair(it->first, it->second);
+	
+	sort(p, p+n, compare);
+	
+	for( int i=0;i<n;i++)
+	{
+	    int freq= p[i].second;
+	    while(freq--)
+	    cout<<p[i].first<<" ";
+	}
+	cout<<endl;
+	}
+	return 0;
+}
