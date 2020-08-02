@@ -1,0 +1,15 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        int x=n;
+        for(int i =1;i<=n;i++)
+        {
+            if(i>x)
+                return i-1;
+            if(i<x)
+                x=x-i;
+            if(x==i)
+                return i;
+        }
+        return 0;
+    }
+}
