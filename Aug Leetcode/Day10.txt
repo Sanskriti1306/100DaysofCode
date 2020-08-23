@@ -1,0 +1,14 @@
+#include <math.h>
+class Solution {
+public:
+    int titleToNumber(string s) {
+        int j=0,sum =0;
+        for(int i=s.length()-1;i>=0;i-- )
+        {
+            int x = pow(26, j);
+            sum = sum + (s[i]-'A' +1)*x;
+        j++;
+        }
+        return sum;
+    }
+};
